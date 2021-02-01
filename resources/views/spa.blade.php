@@ -43,11 +43,11 @@ $config = [
   {{-- Load the application scripts --}}
 
   <script src="/public/dist/js/main.d6c9ad.js"></script>
-  <script src="/public/dist/jquery/jquery-3.4.1.min.js"></script>
-  <script src="/public/dist/jquery/popper.min.js"></script>
-  <script src="/public/dist/jquery/bootstrap.min.js"></script>
-  <script src="/public/dist/jquery/jquery.slimscroll.min.js"></script>
-  <script src="/public/dist/jquery/connect.js"></script>
+{{--  <script src="/public/dist/jquery/jquery-3.4.1.min.js"></script>--}}
+{{--  <script src="/public/dist/jquery/popper.min.js"></script>--}}
+{{--  <script src="/public/dist/jquery/bootstrap.min.js"></script>--}}
+{{--  <script src="/public/dist/jquery/jquery.slimscroll.min.js"></script>--}}
+{{--  <script src="/public/dist/jquery/connect.js"></script>--}}
 
 </body>
 </html>
