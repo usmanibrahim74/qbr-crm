@@ -22,7 +22,7 @@ $config = [
 
   <title>{{ config('app.name') }}</title>
 
-  <link rel="stylesheet" href="/public/dist/css/app.css'">
+  <link rel="stylesheet" href="/public/dist/css/app.248323.css'">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +42,7 @@ $config = [
 
   {{-- Load the application scripts --}}
 
-  <script src="/public/dist/js/main.js"></script>
+  <script src="/public/dist/js/main.d6c9ad.js"></script>
   <script src="/public/dist/jquery/jquery-3.4.1.min.js"></script>
   <script src="/public/dist/jquery/popper.min.js"></script>
   <script src="/public/dist/jquery/bootstrap.min.js"></script>
