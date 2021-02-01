@@ -7,8 +7,9 @@ require('laravel-mix-versionhash')
 mix
   .js('resources/js/main.js', 'public/dist/js')
   .sass('resources/sass/app.scss', 'public/dist/css')
-  // .copy( 'resources/images/**/*', 'public/dist/images/' )
-  // .copy( 'resources/jquery/**/*', 'public/dist/jquery/' )
+  .copy( 'resources/images/**/*', 'public/dist/images/' )
+  .copy( 'resources/jquery/**/*', 'public/dist/jquery/' )
+
 
   .disableNotifications()
 
@@ -32,7 +33,7 @@ mix.webpackConfig({
     }
   },
   output: {
-    publicPath: '/public/',
+    // publicPath: '/public/',
     chunkFilename: 'dist/js/[chunkhash].js',
     path: mix.config.hmr
       ? '/'
