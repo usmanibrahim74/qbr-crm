@@ -36,7 +36,7 @@ mix.webpackConfig({
     path: mix.config.hmr
       ? '/'
       : path.resolve(__dirname, mix.inProduction() ? './public/build' : './public')
-  }
+  },
 })
 
 mix.then(() => {
