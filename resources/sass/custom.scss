@@ -1,0 +1,152 @@
+/* Write your custom CSS here */
+
+.item-actions{
+    font-size: 12px;
+}
+body.modal-open{
+    padding-right: 0 !important;
+}
+
+.select2-results__option{
+    margin-bottom: 2px;
+}
+.select2-container .select2-selection--multiple .select2-selection__rendered{
+    vertical-align: middle;
+}
+.select2-results__option{
+    padding: 9px 16px;
+}
+.form-control-sm{
+    padding: 8px 16px;
+    border-radius: 22px;
+    font-size: 11px;
+}
+
+.report-table a{
+    color: #6c757d;
+}
+nav.navbar{
+  box-shadow: none;
+}
+
+.table-field-wrapper{
+  flex: auto;
+  margin-right: 10px;
+  .table-field{
+    background: transparent;
+    font-size: 13px;
+    font-family: "Lato", sans-serif;
+    color: #5c6662;
+    width: 100%;
+    border:none;
+    outline: none;
+    &.table-field-title{
+      font-weight: bold;
+      font-size: 12px;
+      font-family: "Montserrat", sans-serif;
+    }
+    &:hover, &:focus, &:active, &:focus-within, &:focus-visible{
+      background: #F8FAF9;
+    }
+
+  }
+  input,textarea{
+    &.table-field{
+      padding: 4px 10px;
+    }
+  }
+  select{
+    &.table-field{
+      padding: 4px 6px;
+    }
+  }
+}
+
+
+.list-group-item{
+  padding-top: 11px;
+}
+
+.v-select{
+  padding: 10px 25px;
+  .vs__dropdown-toggle{
+    border: none;
+    padding: 0;
+    .vs__selected-options{
+      padding: 0;
+      .vs__selected{
+        //background: linear-gradient(90deg, #55c3b7 0%, #5fd0a5 48%, #66da90 100%);
+        background: #1F2128;
+        color: rgba(255, 255, 255, 0.5);
+        &:first-child{
+          margin-left: 0;
+        }
+
+        button svg{
+          fill: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
+  }
+  .vs__dropdown-menu{
+    background: #1F2128;
+    padding: 12px 25px;
+    margin-top: 5px!important;
+    border-radius: 25px!important;
+    border: 2px solid #404652 !important;
+
+    .vs__dropdown-option{
+      color: #5E606E;
+      border-radius: 20px;
+      margin: 2px 0;
+      padding: 9px 16px;
+      &.vs__dropdown-option--highlight{
+        background: rgba(94, 96, 110, .15)!important;
+        color: #5fd0a5;
+      }
+      &:hover,&:focus,&:focus-visible,&:focus-within{
+        color: #5fd0a5;
+        //background: linear-gradient(90deg, #55c3b7 0%, #5fd0a5 48%, #66da90 100%);
+      }
+      &.vs__dropdown-option--selected{
+        background: rgba(94, 96, 110, .15)!important;
+        color: #5fd0a5;
+      }
+    }
+  }
+
+  .vs__actions{
+    display: none;
+    button svg{
+      fill: rgba(255, 255, 255, 0.5);
+    }
+  }
+  .vs__search{
+    color: #fff;
+  }
+}
+
+.nav-item .dropdown-menu{
+  border: none !important;
+}
+
+.sub-menu{
+  display: none;
+}
+
+.nav-tabs{
+
+  .nav-item{
+    position:relative;
+    z-index: 10;
+    .nav-link.active{
+      background: #fff;
+      border-color: #fff;
+      box-shadow: 0 -4px 0.5rem rgb(0 0 0 / 10%);
+    }
+    &:first-child .nav-link.active{
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+  }
+}

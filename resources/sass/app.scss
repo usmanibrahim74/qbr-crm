@@ -1,0 +1,16 @@
+@import "~vue-select/src/scss/vue-select.scss";
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/src/index';
+@import '~sweetalert2/src/sweetalert2';
+
+
+@import 'elements/card';
+@import 'elements/navbar';
+@import 'elements/buttons';
+@import 'elements/transitions';
+
+@import "template/connect.scss";
+@import "template/dark_theme.scss";
+
+@import "custom.scss";
