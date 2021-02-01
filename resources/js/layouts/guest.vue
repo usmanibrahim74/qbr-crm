@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import Loader from '~/components/Loader'
     import {mapGetters} from "vuex";
 
     export default {
@@ -25,6 +26,9 @@
       mounted () {
 
         document.body.classList.add(localStorage.getItem('theme')+"-theme");
+      },
+      components:{
+        Loader,
       },
       computed: {
         ...mapGetters({
