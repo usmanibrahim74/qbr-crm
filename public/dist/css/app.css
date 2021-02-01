@@ -19183,12 +19183,12 @@ tr.group {
 }
 
 .error-page.error-404 .error-page-image {
-  background: url("/dist/images/404.svg") center center no-repeat;
+  background: url("/public/dist/images/404.svg") center center no-repeat;
   background-size: 100% 70%;
 }
 
 .error-page.error-500 .error-page-image {
-  background: url("/dist/images/500.svg") center center no-repeat;
+  background: url("/public/dist/images/500.svg") center center no-repeat;
   background-size: 100% 70%;
 }
 
@@ -19217,7 +19217,7 @@ tr.group {
 }
 
 .auth-page.sign-in .auth-image {
-  background: url("/dist//images/login.svg") center center no-repeat;
+  background: url("/public/dist//images/login.svg") center center no-repeat;
   background-size: 90% 70%;
 }
 
