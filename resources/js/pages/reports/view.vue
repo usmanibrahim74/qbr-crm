@@ -227,6 +227,7 @@
   import axios from "axios";
   import {mapGetters} from "vuex";
   import Form from "vform";
+  import _ from "lodash";
 
   export default {
     name: "reports",
@@ -336,7 +337,7 @@
         this.$store.dispatch('app/save', data)
       },
 
-      async updateReportItem(groupIndex,itemIndex){
+      updateReportItem: _.debounce(async function(groupIndex,itemIndex){
         let reportItem = this.report_data.groups[groupIndex].report_items[itemIndex];
         reportItem.group_item_id = reportItem.group_item.id;
         let form = new Form({
@@ -349,17 +350,17 @@
         data.itemIndex = itemIndex;
 
         this.save("UPDATE_REPORT_ITEM", data);
-      },
-      async updateReport(){
+      },500),
+      updateReport: _.debounce(async function(){
         let report = new Form({
           name: this.report_data.name,
           customer_id: this.report_data.customer_id,
           date: this.report_data.date,
           summary: this.report_data.summary,
         });
-        const { data } = await form.put(`/api/report/${this.report_data.id}`);
+        const { data } = await report.put(`/api/report/${this.report_data.id}`);
         this.save("UPDATE_REPORT", data);
-      },
+      },500),
 
       async addGroup(){
         this.add_group.group_has_error = false;

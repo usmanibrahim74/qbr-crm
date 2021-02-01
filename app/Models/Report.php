@@ -13,7 +13,7 @@ class Report extends Model
         'name',
         'customer_id',
         'user_id',
-        'data',
+        'date',
         'summary',
     ];
 
