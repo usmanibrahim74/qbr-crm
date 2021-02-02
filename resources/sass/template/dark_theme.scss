@@ -1006,9 +1006,9 @@
 .dark-theme {
   .table-field-wrapper{
     .table-field{
-      &:hover, &:focus, &:active, &:focus-within, &:focus-visible{
-        background: #1F2128;
-      }
+      border: 1px solid !important;
+      border-radius: 12px;
+      background: #1F2128 !important;
     }
   }
 

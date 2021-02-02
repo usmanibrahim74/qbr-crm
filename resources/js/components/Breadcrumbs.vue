@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" v-if="false">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Apps</a></li>
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>

@@ -141,4 +141,11 @@ class ReportsController extends Controller
         $report->save();
         return response()->json($report);
     }
+
+    public function generateReport($id){
+        $report = $this->getReportById($id);
+
+//        $this->view('report');
+        return view('report', compact('report'));
+    }
 }

@@ -8,121 +8,16 @@
     </div>
 
     <div class="main-wrapper">
-
       <div class="row">
+
         <div class="col-xl" v-if="report_data">
-          <ul class="nav nav-tabs mb-0" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="report-tab" data-toggle="tab" href="#report" role="tab" aria-controls="report" aria-selected="true">Report</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="false">Details</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="report-tabs">
-            <div class="tab-pane fade show active" id="report" role="tabpanel" aria-labelledby="report-tab">
-              <div class="card" >
-                <div class="card-body table-responsive">
-                  <div class="report-group" v-for="(group,i) in report_data.groups" :key="i">
-                    <div class="d-flex justify-content-between">
-                      <h5 class="card-title">{{ group.name }}</h5>
-                      <div>
-                        <a href="#" @click.prevent="deleteGroup(group)"
-                           class="btn btn-xs btn-danger">
-                          <font-awesome-icon :icon="['fas', 'trash']" :class="'mr-1'" />Delete
-                        </a>
-                        <a href="#" class="btn btn-xs btn-primary" @click.prevent="addGroupItem(group.id)">
-                          <font-awesome-icon :icon="['fas', 'plus']" :class="'mr-1'" />Add
-                        </a>
-                      </div>
-                    </div>
-
-                    <b-table :items="group.report_items" :fields="fields">
-                      <template #cell(id)="row">
-                        <a href="#" @click.prevent="row.toggleDetails" class="edit-item text-center text-muted">
-                          <font-awesome-icon v-if="row.detailsShowing" :icon="['fas', 'minus']" />
-                          <font-awesome-icon v-else :icon="['fas', 'plus']" />
-                        </a>
-                      </template>
-                      <template #cell(actions)="data" class="text-center">
-                        <a href="#" @click.prevent="deleteItem(data.item)" class="text-muted">
-                          <font-awesome-icon :icon="['fas', 'trash']" />
-                        </a>
-                      </template>
-                      <template #cell(status)="data" :class="'text-center'">
-                        <span class="badge" :class="getStatusBadgeClass(data.item.status)">{{ data.item.status }}</span>
-                      </template>
-
-                      <template #row-details="row">
-                        <div class="row expended-table">
-                          <div class="col-md-6">
-                            <div class="d-flex">
-                              <label> Item: </label>
-                              <div class="table-field-wrapper">
-                                <select @change="updateReportItem(i,row.index)" name="" class="table-field" v-model="row.item.group_item">
-                                  <template v-for="item in getGroupItems(row.item.group_id)">
-                                    <option :value="item">{{ item.name }}</option>
-                                  </template>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="d-flex">
-                              <label> Status: </label>
-                              <div class="table-field-wrapper">
-                                <select name="" class="table-field" v-model="row.item.status">
-                                  <template v-for="status in statusList">
-                                    <option :value="status">{{ status }}</option>
-                                  </template>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="d-flex">
-                              <label> Notes: </label>
-                              <div class="table-field-wrapper">
-                                <input type="text" v-model="row.item.notes" class="table-field">
-                              </div>
-                            </div>
-                            <div class="d-flex">
-                              <label> QTR: </label>
-                              <div class="table-field-wrapper">
-                                <input type="text" v-model="row.item.qtr" class="table-field">
-                              </div>
-                            </div>
-                            <div class="d-flex">
-                              <label> Target Year: </label>
-                              <div class="table-field-wrapper">
-                                <input type="text" v-model="row.item.target_year" class="table-field">
-                              </div>
-                            </div>
-                            <div class="d-flex">
-                              <label> Budget: </label>
-                              <div class="table-field-wrapper">
-                                <input type="text" v-model="row.item.budget" class="table-field">
-                              </div>
-                            </div>
-
-                          </div>
-                          <div class="col-md-6">
-                            <div class="d-flex">
-                              <label>Solution:</label>
-                              <div class="table-field-wrapper">
-                          <textarea placeholder="Type solution here" class="table-field"
-                                    name="" id="" cols="30" rows="7" v-model="row.item.solution">
-
-                          </textarea>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </template>
-                    </b-table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
-              <div class="card">
-                <div class="card-body">
+          <div class="accordion" role="tablist">
+            <b-card no-body style="margin-bottom: 20px">
+              <b-card-header v-b-toggle.accordion-1>
+                Report Details
+              </b-card-header>
+              <b-collapse id="accordion-1" accordion="my-accordion" role="tabpanel">
+                <b-card-body>
                   <div class="row expended-table">
                     <div class="col-md-6">
                       <div class="d-flex">
@@ -156,10 +51,109 @@
                     </div>
 
                   </div>
+                </b-card-body>
+              </b-collapse>
+            </b-card>
+          </div>
+          <div class="card" v-for="(group,i) in report_data.groups" :key="i">
+            <div class="card-body table-responsive">
+              <div class="report-group">
+                <div class="d-flex justify-content-between">
+                  <h5 class="card-title">{{ group.name }}</h5>
+                  <div>
+                    <a href="#" @click.prevent="deleteGroup(group)"
+                       class="btn btn-xs btn-danger">
+                      <font-awesome-icon :icon="['fas', 'trash']" :class="'mr-1'" />Delete
+                    </a>
+                    <a href="#" class="btn btn-xs btn-primary" @click.prevent="addGroupItem(group.id)">
+                      <font-awesome-icon :icon="['fas', 'plus']" :class="'mr-1'" />Add
+                    </a>
+                  </div>
                 </div>
+
+                <b-table :items="group.report_items" :fields="fields">
+                  <template #cell(id)="row">
+                    <a href="#" @click.prevent="row.toggleDetails" class="edit-item text-center text-muted">
+                      <font-awesome-icon v-if="row.detailsShowing" :icon="['fas', 'minus']" />
+                      <font-awesome-icon v-else :icon="['fas', 'plus']" />
+                    </a>
+                  </template>
+                  <template #cell(actions)="data" class="text-center">
+                    <a href="#" @click.prevent="deleteItem(data.item)" class="text-muted">
+                      <font-awesome-icon :icon="['fas', 'trash']" />
+                    </a>
+                  </template>
+                  <template #cell(status)="data" :class="'text-center'">
+                    <span class="badge" :class="getStatusBadgeClass(data.item.status)">{{ data.item.status }}</span>
+                  </template>
+
+                  <template #row-details="row">
+                    <div class="row expended-table">
+                      <div class="col-md-6">
+                        <div class="d-flex">
+                          <label> Item: </label>
+                          <div class="table-field-wrapper">
+                            <select @change="updateReportItem(i,row.index)" name="" class="table-field" v-model="row.item.group_item">
+                              <template v-for="item in getGroupItems(row.item.group_id)">
+                                <option :value="item">{{ item.name }}</option>
+                              </template>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <label> Status: </label>
+                          <div class="table-field-wrapper">
+                            <select name="" class="table-field" v-model="row.item.status">
+                              <template v-for="status in statusList">
+                                <option :value="status">{{ status }}</option>
+                              </template>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <label> Notes: </label>
+                          <div class="table-field-wrapper">
+                            <input type="text" v-model="row.item.notes" class="table-field">
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <label> QTR: </label>
+                          <div class="table-field-wrapper">
+                            <input type="text" v-model="row.item.qtr" class="table-field">
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <label> Target Year: </label>
+                          <div class="table-field-wrapper">
+                            <input type="text" v-model="row.item.target_year" class="table-field">
+                          </div>
+                        </div>
+                        <div class="d-flex">
+                          <label> Budget: </label>
+                          <div class="table-field-wrapper">
+                            <input type="text" v-model="row.item.budget" class="table-field">
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6">
+                        <div class="d-flex">
+                          <label>Solution:</label>
+                          <div class="table-field-wrapper">
+                          <textarea placeholder="Type solution here" class="table-field"
+                                    name="" id="" cols="30" rows="7" v-model="row.item.solution">
+
+                          </textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </b-table>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -476,15 +470,18 @@
     textarea{
       resize: none;
     }
+    .d-flex{
+      margin-bottom: 10px;
+    }
 
-  }
-  .card{
-    border-top-left-radius: 0;
   }
   .report-group:not(:last-child){
     margin-bottom: 40px;
   }
   #myTab{
     border-bottom: none;
+  }
+  .card-header{
+    outline: none;
   }
 </style>

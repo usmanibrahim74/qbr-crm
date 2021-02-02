@@ -21893,12 +21893,10 @@ tr.group {
   outline: #404652;
 }
 
-.dark-theme .table-field-wrapper .table-field:hover,
-.dark-theme .table-field-wrapper .table-field:focus,
-.dark-theme .table-field-wrapper .table-field:active,
-.dark-theme .table-field-wrapper .table-field:focus-within,
-.dark-theme .table-field-wrapper .table-field:focus-visible {
-  background: #1F2128;
+.dark-theme .table-field-wrapper .table-field {
+  border: 1px solid !important;
+  border-radius: 12px;
+  background: #1F2128 !important;
 }
 
 .dark-theme .nav-tabs .nav-item .nav-link.active {
@@ -21955,20 +21953,15 @@ nav.navbar {
   width: 100%;
   border: none;
   outline: none;
+  border: 1px solid !important;
+  border-radius: 12px;
+  background: #dbdbdb !important;
 }
 
 .table-field-wrapper .table-field.table-field-title {
   font-weight: bold;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
-}
-
-.table-field-wrapper .table-field:hover,
-.table-field-wrapper .table-field:focus,
-.table-field-wrapper .table-field:active,
-.table-field-wrapper .table-field:focus-within,
-.table-field-wrapper .table-field:focus-visible {
-  background: #F8FAF9;
 }
 
 .table-field-wrapper input.table-field,

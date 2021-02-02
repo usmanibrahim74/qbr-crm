@@ -19,6 +19,8 @@ class CustomersController extends Controller
 
     public function addCustomer(Request $request){
 
+        dd($request->all());
+
         $customer = new Customer();
         $customer->create($request->all());
 

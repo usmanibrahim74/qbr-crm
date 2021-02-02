@@ -40,13 +40,13 @@ nav.navbar{
     width: 100%;
     border:none;
     outline: none;
+    border: 1px solid !important;
+    border-radius: 12px;
+    background: #dbdbdb !important;
     &.table-field-title{
       font-weight: bold;
       font-size: 12px;
       font-family: "Montserrat", sans-serif;
-    }
-    &:hover, &:focus, &:active, &:focus-within, &:focus-visible{
-      background: #F8FAF9;
     }
 
   }
