@@ -31,7 +31,7 @@
               <router-link :to="{ name: 'reports'}">View All</router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'settings.report'}"><i class="material-icons">settings</i>Report Settings</router-link>
+              <router-link :to="{ name: 'settings.report'}">Report Settings</router-link>
             </li>
           </ul>
         </li>
