@@ -9,7 +9,10 @@ export const state = {
   groups: [],
   reports: [],
   customers: [],
+  risks: [],
+  customer:null,
   report:null,
+  summary:"",
   theme:"light",
 
 }
@@ -21,6 +24,9 @@ export const getters = {
   customers: state => state.customers,
   reports: state => state.reports,
   report: state => state.report,
+  customer: state => state.customer,
+  risks: state => state.risks,
+  summary: state => state.summary,
   group_items_count: state => {
     let total = 0;
     state.groups.forEach(function (group) {
@@ -50,6 +56,15 @@ export const mutations = {
 
   FETCH_CUSTOMERS_SUCCESS(state,data){
     state.customers = data.customers;
+  },
+  FETCH_CUSTOMER_SUCCESS(state,data){
+    state.customer = data.customer;
+  },
+  FETCH_RISKS_SUCCESS(state,data){
+    state.risks = data.risks;
+  },
+  FETCH_SUMMARY_SUCCESS(state,data){
+    state.summary = data.summary;
   },
 
 
@@ -142,6 +157,18 @@ export const actions = {
   async fetchCustomers({commit}){
     const { data } = await axios.get(`/api/customers`)
     commit('FETCH_CUSTOMERS_SUCCESS',{customers:data});
+  },
+  async fetchCustomer({commit}, payload){
+    const { data } = await axios.get(`/api/customer/${payload.id}`)
+    commit('FETCH_CUSTOMER_SUCCESS',{customer:data});
+  },
+  async fetchRisks({commit}, payload){
+    const { data } = await axios.get(`/api/risks`)
+    commit('FETCH_RISKS_SUCCESS',{risks:data});
+  },
+  async fetchSummary({commit}, payload){
+    const { data } = await axios.get(`/api/settings/summary`)
+    commit('FETCH_SUMMARY_SUCCESS',{summary:data.summary});
   },
 
   save ({ commit }, data) {

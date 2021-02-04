@@ -11,9 +11,10 @@
     <div class="main-wrapper">
       <div class="row">
         <div class="col-xl">
+          <h5 class="mb-4 ml-2">Reports</h5>
           <div class="card">
             <div class="card-body table-responsive" v-if="reports.length">
-              <h5 class="card-title">Reports</h5>
+
               <b-table :items="reports" :fields="fields">
                 <template #head(actions)="data">
                   <div class="text-center">

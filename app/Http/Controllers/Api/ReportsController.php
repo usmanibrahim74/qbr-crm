@@ -31,7 +31,7 @@ class ReportsController extends Controller
 
     private function getReportById($id){
         return Report::with(['customer','groups.reportItems'=>function($q)use($id){
-            return $q->where('report_id',$id)->with('groupItem');
+            return $q->where('report_id',$id)->with(['groupItem','risk']);
         }])->find($id);
     }
 
@@ -67,7 +67,7 @@ class ReportsController extends Controller
     public function updateItem(Request $request,$id){
         $reportItem = ReportItem::findOrFail($id);
         $reportItem->fill($request->toArray())->save();
-        $reportItem->load('groupItem');
+        $reportItem->load(['groupItem','risk']);
         return response()->json($reportItem);
     }
 
@@ -115,10 +115,11 @@ class ReportsController extends Controller
         $reportItem->notes = "";
         $reportItem->solution = "";
         $reportItem->qtr = "";
-        $reportItem->status = "Satisfactory";
+        $reportItem->risk_id = 1;
         $reportItem->budget = "";
         $reportItem->target_year = "";
         $reportItem->save();
+        $reportItem->load('risk');
         return response()->json($this->getReportById($report_id));
 
     }

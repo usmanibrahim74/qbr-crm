@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GroupsController;
 use App\Http\Controllers\Api\ReportsController;
 use App\Http\Controllers\Api\CustomersController;
+use App\Http\Controllers\Api\RisksController;
+use App\Http\Controllers\Api\SettingsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -55,6 +57,15 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('customers',[CustomersController::class,'getCustomers']);
     Route::post('customer/add',[CustomersController::class,'addCustomer']);
+    Route::get('customer/{id}',[CustomersController::class,'getCustomer']);
+    Route::put('customer/{id}',[CustomersController::class,'updateCustomer']);
+
+    Route::get('settings/summary',[SettingsController::class,'getExecutiveSummary']);
+    Route::post('settings/summary',[SettingsController::class,'updateExecutiveSummary']);
+
+    Route::get('risks',[RisksController::class,'getRisks']);
+
+    Route::get('dashboard',[SettingsController::class,'getStats']);
 
 });
 

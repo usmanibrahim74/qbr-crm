@@ -9,15 +9,16 @@
     </div>
 
     <div class="main-wrapper">
+<!--      <h5 class="mb-4 ml-2">Groups</h5>-->
       <div class="row">
 
         <div class="col-xl" v-for="(oneColumnGroups,i) in columnGroups" :key="i">
 
           <div class="card" v-for="(group,i) in oneColumnGroups" :key="i">
-            <div class="card-header">
+            <div class="card-header style-0">
               <div class="d-flex justify-content-between">
                 <div class="item-title table-field-wrapper">
-                  <input type="text" class="table-field table-field-title" placeholder="Enter Group Name" @input="updateGroup(group)" v-model="group.name">
+                  <input type="text" class="table-field style-0 table-field-title" placeholder="Enter Group Name" @input="updateGroup(group)" v-model="group.name">
                 </div>
                 <div class="item-actions">
                   <a href="#" @click.prevent="addItem(group.id)" class="text-muted py-0 px-1">
@@ -33,7 +34,7 @@
               <li class="list-group-item" v-for="(item,i) in group.items" :key="i">
                 <div class="d-flex justify-content-between">
                   <div class="item-title table-field-wrapper">
-                    <input type="text" class="table-field" placeholder="Enter Item Name" @input="updateGroupItem(item)" v-model="item.name">
+                    <input type="text" class="table-field style-0" placeholder="Enter Item Name" @input="updateGroupItem(item)" v-model="item.name">
                   </div>
                   <div class="item-actions">
                     <a href="#" @click.prevent="deleteGroupItem(item)" class="text-muted py-0 px-1">

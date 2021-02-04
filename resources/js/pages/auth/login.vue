@@ -2,7 +2,9 @@
   <div class="auth-form">
     <div class="row">
       <div class="col">
-        <div class="logo-box"><a href="#" class="logo-text">Creative</a></div>
+        <div class="logo-box"><a href="#" class="logo-text">
+          <img :src="getAssetPath('images/cn-logo.png')" class="w-100" alt="">
+        </a></div>
         <form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <!-- Email -->
           <div class="form-group">

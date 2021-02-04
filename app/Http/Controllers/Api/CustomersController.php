@@ -19,7 +19,6 @@ class CustomersController extends Controller
 
     public function addCustomer(Request $request){
 
-        dd($request->all());
 
         $customer = new Customer();
         $customer->create($request->all());
@@ -27,6 +26,24 @@ class CustomersController extends Controller
         return response()->json([
            'status' => 'success',
            'message' => 'Customer has been added'
+        ]);
+
+    }
+
+    public function getCustomer($id){
+
+        $customer = Customer::findOrFail($id);
+        return response()->json($customer);
+
+    }
+
+    public function updateCustomer(Request $request, $id){
+
+        $customer = Customer::findOrFail($id);
+        $customer->fill($request->all())->save();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Customer has been updated'
         ]);
 
     }

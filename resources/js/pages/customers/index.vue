@@ -12,9 +12,10 @@
     <div class="main-wrapper">
       <div class="row">
         <div class="col-xl">
+          <h5 class="mb-4 ml-2">Customers</h5>
           <div class="card">
             <div class="card-body table-responsive" v-if="customers.length">
-              <h5 class="card-title">Reports</h5>
+
               <b-table :items="customers" :fields="fields">
                 <template #head(actions)="data">
                   <div class="text-center">
@@ -22,13 +23,13 @@
                   </div>
                 </template>
                 <template #cell(actions)="data">
-                  <div class="text-center">
+                  <div class="text-center" style="font-size: 20px">
 
-                    <router-link :to="{ name: 'report.view', params:{id:data.item.id}}" class="text-muted">
-                      <font-awesome-icon :icon="['fas', 'eye']" />
+                    <router-link :to="{ name: 'customer.view', params:{id:data.item.id}}" class="text-muted">
+                      <font-awesome-icon :icon="['fas', 'edit']" class="table-action-icon mr-1" />
                     </router-link>
                     <a href="#" class="text-muted" @click="deleteCustomer(data.item.id)">
-                      <font-awesome-icon :icon="['fas', 'trash']" />
+                      <font-awesome-icon :icon="['fas', 'trash']" class="table-action-icon" />
                     </a>
                   </div>
                 </template>
@@ -38,7 +39,7 @@
             <div class="card-body text-center" v-else>
               <h5 class="card-title">No Customer</h5>
               <p class="card-text">There are no customers to show.</p>
-              <router-link :to="{ name: 'report.create' }" class="btn btn-primary">
+              <router-link :to="{ name: 'customer.create' }" class="btn btn-primary">
                 Add Customer
               </router-link>
             </div>
@@ -91,7 +92,12 @@
           },
           {
             key: 'name',
-            label: "Customer Name",
+            label: "Company Name",
+            sortable: true
+          },
+          {
+            key: 'location',
+            label: "Location",
             sortable: true
           },
           'actions'

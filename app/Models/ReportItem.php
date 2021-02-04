@@ -14,7 +14,7 @@ class ReportItem extends Model
         'group_item_id',
         'group_id',
         'report_id',
-        'status',
+        'risk_id',
         'notes',
         'solution',
         'qtr',
@@ -25,5 +25,13 @@ class ReportItem extends Model
 
     public function groupItem(){
         return $this->belongsTo(GroupItem::class);
+    }
+
+    public function risk(){
+        return $this->belongsTo(Risk::class);
+    }
+
+    public function getStatusAttribute(){
+        return $this->risk->name;
     }
 }

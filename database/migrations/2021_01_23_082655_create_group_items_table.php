@@ -16,7 +16,7 @@ class CreateGroupItemsTable extends Migration
         Schema::create('group_items', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('group_id')->constrained();
+            $table->foreignId('group_id')->constrained()->onDelete('cascade');
             $table->integer('order');
             $table->timestamps();
         });

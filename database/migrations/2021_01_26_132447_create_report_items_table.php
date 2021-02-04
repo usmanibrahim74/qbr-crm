@@ -15,10 +15,10 @@ class CreateReportItemsTable extends Migration
     {
         Schema::create('report_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('report_id');
-            $table->unsignedInteger('group_item_id');
-            $table->unsignedInteger('group_id');
-            $table->string('status')->nullable();
+            $table->foreignId('report_id')->constrained('reports')->onDelete('cascade');
+            $table->foreignId('group_item_id')->constrained('group_items');
+            $table->foreignId('group_id')->constrained('groups');
+            $table->foreignId('risk_id')->constrained('risks');
             $table->string('notes')->nullable();
             $table->string('solution')->nullable();
             $table->string('qtr')->nullable();

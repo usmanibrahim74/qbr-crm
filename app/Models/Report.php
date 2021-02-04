@@ -15,6 +15,9 @@ class Report extends Model
         'user_id',
         'date',
         'summary',
+        'quarter',
+        'created_at',
+        'updated_at',
     ];
 
     public function groups(){

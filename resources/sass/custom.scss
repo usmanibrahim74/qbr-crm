@@ -28,7 +28,11 @@ body.modal-open{
 nav.navbar{
   box-shadow: none;
 }
-
+.card-header{
+ &.style-0{
+   background: #fa5700;
+ }
+}
 .table-field-wrapper{
   flex: auto;
   margin-right: 10px;
@@ -39,14 +43,22 @@ nav.navbar{
     color: #5c6662;
     width: 100%;
     border:none;
-    outline: none;
-    border: 1px solid !important;
-    border-radius: 12px;
-    background: #dbdbdb !important;
     &.table-field-title{
       font-weight: bold;
       font-size: 12px;
       font-family: "Montserrat", sans-serif;
+    }
+    &.style-1{
+      outline: none;
+      border: 1px solid !important;
+      border-radius: 12px;
+      background: #dbdbdb !important;
+    }
+    &.style-0{
+      &:hover, &:focus, &:active, &:focus-within, &:focus-visible{
+        background: #F8FAF9;
+      }
+
     }
 
   }
@@ -61,7 +73,27 @@ nav.navbar{
     }
   }
 }
+.card-header{
+  &.style-0{
+    background: #fa5700;
+    .table-field-wrapper{
+      .table-field{
+        color: #fff;
+        &::placeholder{
+          color: rgba(255,255,255,0.6);
+        }
+        &:hover, &:focus, &:active, &:focus-within, &:focus-visible{
+          background: rgba(0,0,0,0.5);
 
+        }
+      }
+    }
+    .item-actions a{
+      color: #fff !important;
+    }
+  }
+
+}
 
 .list-group-item{
   padding-top: 11px;
@@ -149,4 +181,15 @@ nav.navbar{
       border-bottom-right-radius: 0 !important;
     }
   }
+}
+
+.fontawesome-sidebar-icon{
+  font-size: 16px;
+  width: 20px;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.table-action-icon{
+  font-size: 16px;
 }

@@ -10,12 +10,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
-  faGithub, faTwitter
+  faGithub, faTwitter, faDeskpro
 } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
   faUser, faLock, faSignOutAlt, faCog, faGithub, faTwitter, faEdit, faTrash, faPlus, faMinus,
-  faEye, faEyeSlash, faCaretRight, faCaretDown, faLayerGroup,
+  faEye, faEyeSlash, faCaretRight, faCaretDown, faLayerGroup, faDeskpro
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

@@ -23,13 +23,13 @@
                       <div class="d-flex">
                         <label> Report Name: </label>
                         <div class="table-field-wrapper">
-                          <input type="text" name="name" class="table-field" v-model="report_data.name" @input="updateReport">
+                          <input type="text" name="name" class="table-field style-1" v-model="report_data.name" @input="updateReport">
                         </div>
                       </div>
                       <div class="d-flex">
                         <label> Customer: </label>
                         <div class="table-field-wrapper">
-                          <select name="customer_id" required class="table-field" v-model="report_data.customer_id" @change="updateReport">
+                          <select name="customer_id" required class="table-field style-1" v-model="report_data.customer_id" @change="updateReport">
                             <option :value="customer.id" v-for="(customer,i) in customers" :key="i">{{ customer.name }}</option>
                           </select>
                         </div>
@@ -37,14 +37,14 @@
                       <div class="d-flex">
                         <label> Report Date: </label>
                         <div class="table-field-wrapper">
-                          <input required type="date" v-model="report_data.date" class="table-field" id="report-date" name="date" @input="updateReport">
+                          <input required type="date" v-model="report_data.date" class="table-field style-1" id="report-date" name="date" @input="updateReport">
                         </div>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <label> Report Summary: </label>
                       <div class="table-field-wrapper">
-                        <textarea name="summary" class="table-field" id="report-summary" @input="updateReport" v-model="report_data.summary"
+                        <textarea name="summary" class="table-field style-1" id="report-summary" @input="updateReport" v-model="report_data.summary"
                                   placeholder="write summary here"
                                   style="resize: vertical" cols="30" rows="10"></textarea>
                       </div>
@@ -93,7 +93,7 @@
                         <div class="d-flex">
                           <label> Item: </label>
                           <div class="table-field-wrapper">
-                            <select @change="updateReportItem(i,row.index)" name="" class="table-field" v-model="row.item.group_item">
+                            <select @change="updateReportItem(i,row.index)" name="" class="table-field  style-1" v-model="row.item.group_item">
                               <template v-for="item in getGroupItems(row.item.group_id)">
                                 <option :value="item">{{ item.name }}</option>
                               </template>
@@ -103,9 +103,9 @@
                         <div class="d-flex">
                           <label> Status: </label>
                           <div class="table-field-wrapper">
-                            <select name="" class="table-field" v-model="row.item.status">
-                              <template v-for="status in statusList">
-                                <option :value="status">{{ status }}</option>
+                            <select @change="updateReportItem(i,row.index)" name="" class="table-field style-1" v-model="row.item.risk_id">
+                              <template v-for="status in risks">
+                                <option :value="status.id">{{ status.name }}</option>
                               </template>
                             </select>
                           </div>
@@ -113,25 +113,25 @@
                         <div class="d-flex">
                           <label> Notes: </label>
                           <div class="table-field-wrapper">
-                            <input type="text" v-model="row.item.notes" class="table-field">
+                            <input @input="updateReportItem(i,row.index)" type="text" v-model="row.item.notes" class="table-field style-1">
                           </div>
                         </div>
                         <div class="d-flex">
                           <label> QTR: </label>
                           <div class="table-field-wrapper">
-                            <input type="text" v-model="row.item.qtr" class="table-field">
+                            <input @input="updateReportItem(i,row.index)" type="text" v-model="row.item.qtr" class="table-field style-1">
                           </div>
                         </div>
                         <div class="d-flex">
                           <label> Target Year: </label>
                           <div class="table-field-wrapper">
-                            <input type="text" v-model="row.item.target_year" class="table-field">
+                            <input @input="updateReportItem(i,row.index)" type="text" v-model="row.item.target_year" class="table-field style-1">
                           </div>
                         </div>
                         <div class="d-flex">
                           <label> Budget: </label>
                           <div class="table-field-wrapper">
-                            <input type="text" v-model="row.item.budget" class="table-field">
+                            <input @input="updateReportItem(i,row.index)" type="text" v-model="row.item.budget" class="table-field style-1">
                           </div>
                         </div>
 
@@ -140,7 +140,7 @@
                         <div class="d-flex">
                           <label>Solution:</label>
                           <div class="table-field-wrapper">
-                          <textarea placeholder="Type solution here" class="table-field"
+                          <textarea @input="updateReportItem(i,row.index)" placeholder="Type solution here" class="table-field style-1"
                                     name="" id="" cols="30" rows="7" v-model="row.item.solution">
 
                           </textarea>
@@ -256,7 +256,7 @@
             sortable: true
           },
           {
-            key: 'status',
+            key: 'risk.name',
             label: "Status",
             sortable: false
           },
@@ -294,12 +294,14 @@
       this.$store.dispatch('app/fetchReport',{id:id});
       this.$store.dispatch('app/fetchGroupsWithItems');
       this.$store.dispatch('app/fetchCustomers');
+      this.$store.dispatch('app/fetchRisks');
     },
     computed:{
       ...mapGetters({
         report: 'app/report',
         groups: 'app/groups',
         customers: 'app/customers',
+        risks: 'app/risks',
       }),
       availableGroups(){
         let groups = this.groups.filter((g) =>{

@@ -16,8 +16,9 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('customer_id');
-            $table->integer('user_id');
+            $table->foreignId('customer_id')->constrained('customers');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('quarter')->nullable();
             $table->text('summary')->nullable();
             $table->date('date')->default(date("Y-m-d H:i:s"));
             $table->timestamps();

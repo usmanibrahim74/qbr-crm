@@ -10,9 +10,10 @@
 
       <div class="row">
         <div class="col-xl">
+          <h5 class="mb-4 ml-2">Create Report</h5>
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Create Report</h5>
+
               <form action="" @submit.prevent="addReport" method="post" class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -21,6 +22,19 @@
                   </div>
                 </div>
                 <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="report-date">Report date:</label>
+                    <input required type="date" v-model="report.date" class="form-control" id="report-date" name="date">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="report-date">Quarter:</label>
+                    <input required type="text" v-model="report.quarter" class="form-control" id="report-quarter" name="quarter">
+                  </div>
+                </div>
+                <div class="col-md-6">
+
                   <div class="form-group">
                     <label for="customer">Select Customer:</label>
                     <select name="customer" required v-model="report.customer" id="customer" class="form-control">
@@ -48,10 +62,7 @@
                   </div>
                 </div>
                 <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="report-date">Report date:</label>
-                    <input required type="date" v-model="report.date" class="form-control" id="report-date" name="date">
-                  </div>
+
                   <div class="form-group">
                     <label for="report-summary">Summary:</label>
                     <textarea name="summary" id="report-summary" v-model="report.summary" cols="30" rows="10" class="form-control" style="resize: vertical"></textarea>
@@ -94,6 +105,8 @@
           customer:0,
           groups:[],
           date:"",
+          quarter:"",
+          summary:"",
         }),
       }
     },
