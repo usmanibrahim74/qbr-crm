@@ -4,7 +4,8 @@
 
 <script>
     export default {
-        name: "deskpro"
+        name: "deskpro",
+      middleware: 'auth',
     }
 </script>
 

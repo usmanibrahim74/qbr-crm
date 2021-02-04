@@ -45,6 +45,7 @@
   import Form from "vform";
     export default {
         name: "settings",
+      middleware: 'auth',
         data(){
           return {
             summary: "",

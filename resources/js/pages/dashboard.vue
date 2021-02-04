@@ -49,6 +49,7 @@
     import axios from "axios";
     export default {
         name: "dashboard",
+      middleware: 'auth',
       data(){
           return {
             customers: 0,

@@ -77,6 +77,7 @@
 
     export default {
       name: "index",
+      middleware: 'auth',
       data(){
         return {
           delete_modal:{

@@ -78,6 +78,7 @@
 
   export default {
     name: "customers",
+    middleware: 'auth',
     data(){
       return {
         delete_modal:{

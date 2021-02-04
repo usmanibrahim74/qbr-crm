@@ -90,6 +90,7 @@
 
   export default {
     name: "create",
+    middleware: 'auth',
     data:function(){
       return {
         customer_data: {

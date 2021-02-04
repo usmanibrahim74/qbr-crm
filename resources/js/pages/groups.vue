@@ -81,6 +81,7 @@
 
     export default {
         name: "groups",
+      middleware: 'auth',
       data:function(){
           return {
             add_report_modal: new Form({

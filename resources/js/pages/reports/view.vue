@@ -225,6 +225,7 @@
 
   export default {
     name: "reports",
+    middleware: 'auth',
     data:function(){
       return {
         report_data:null,

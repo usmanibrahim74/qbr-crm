@@ -98,6 +98,7 @@
 
   export default {
     name: "create",
+    middleware: 'auth',
     data:function(){
       return {
         report: new Form({
