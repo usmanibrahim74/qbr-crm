@@ -115,14 +115,14 @@
           limit = Math.ceil(limit / 3);
           let count = 0;
           let columnGroups = [[],[],[]];
-          this.groups.forEach(function (group) {
+          this.groups.forEach(function (group, i) {
             let length = group.items?group.items.length:0;
             count += length+1;
-            if(count <= limit){
+            if(count <= limit || columnGroups[0].length == 0){
               columnGroups[0] = columnGroups[0].concat([group]);
-            }else if(count <= 2*limit){
+            }else if(count <= 2*limit || columnGroups[1].length == 0){
               columnGroups[1] = columnGroups[1].concat([group]);
-            }else if(count <= 3*limit){
+            }else if(count <= 3*limit || columnGroups[2].length == 0){
               columnGroups[2] = columnGroups[2].concat([group]);
             }
           })
