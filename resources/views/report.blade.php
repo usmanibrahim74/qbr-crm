@@ -398,10 +398,11 @@
     $('.a4-page').children().each(function(i,item){
 
       if(h + $(item).height() >height){
-        h = height + $(item).height();
+
         if(StartNewPage){
           StartNewPage = false;
           html += '<div class="page-break"></div><div class="a4-page" >';
+          h = height + $(item).height();
         }
 
         if(newPageHeightContained + $(item).height()> pageHeight){
@@ -410,10 +411,11 @@
           newPageHeightContained = $(item).height();
           html += '</div>';
           html += '<div class="page-break"></div><div class="a4-page" >';
+          h = height + $(item).height();
 
         }else{
           newPageHeightContained +=$(item).height();
-
+          h += $(item).height();
         }
         html += $(item).wrap('<p/>').parent().html();
         $(item).unwrap();
