@@ -429,6 +429,7 @@
     })
     $('body').append(html);
     $(itemsToRemove).remove();
+    window.print();
   })
 </script>
 
