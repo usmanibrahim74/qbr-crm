@@ -387,7 +387,7 @@
   window.config = @json($config);
   $(document).ready(function () {
     let h = 0;
-    let pageHeight = 712.797;
+    let pageHeight = 756.8;
     let height = pageHeight;
     let iteration = 1;
     let html ="";
