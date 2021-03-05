@@ -265,7 +265,7 @@
             <p>Prepared By:</p>
           </div>
           <div class="col-6">
-            <p>Usman</p>
+            <p>{{ $report->user->name }}</p>
           </div>
         </div>
       </div>
@@ -300,7 +300,9 @@
     <div class="row mt-4">
       <div class="col-12">
         <h4 class="font-weight-bold">Excustive Summary</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid atque dolorem enim ex, laboriosam nisi pariatur quae. Ab aliquam dignissimos distinctio doloremque eum fugiat hic illo illum iure laudantium minima, natus omnis perspiciatis, quis quisquam similique sit unde ut, veniam vitae! At aut beatae, distinctio doloremque facere modi officia saepe?</p>
+        <p>
+          {{ $report->summary }}
+        </p>
       </div>
     </div>
 
@@ -424,7 +426,8 @@
         h += $(item).height();
       }
     })
-    $('body').append(html)
+    $('body').append(html);
+    window.print();
   })
 </script>
 

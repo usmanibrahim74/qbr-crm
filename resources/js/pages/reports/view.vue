@@ -4,6 +4,8 @@
       <breadcrumbs />
       <div class="page-options">
         <b-button variant="primary" @click="add_group.show_modal = true">Add Group</b-button>
+        <a target="_blank" :href="'/report/'+report_data.id+'/generate'" class="btn btn-secondary">Generate Report</a>
+
       </div>
     </div>
 

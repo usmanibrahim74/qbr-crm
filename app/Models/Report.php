@@ -36,4 +36,8 @@ class Report extends Model
     public function reportGroupItems(){
         return $this->hasManyThrough(ReportItem::class,'group_item_id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
