@@ -386,48 +386,48 @@
 <script>
   window.config = @json($config);
   $(document).ready(function () {
-    let h = 0;
-    let pageHeight = 756.8;
-    let height = pageHeight;
-    let iteration = 1;
-    let html ="";
-    let StartNewPage = true;
-    let EndNewPage = false;
-    let newPageHeightContained = 0;
-    $('.a4-page').children().each(function(i,item){
-
-      if(h + $(item).height() >height){
-        if(StartNewPage){
-          StartNewPage = false;
-          html += '<div class="page-break"></div><div class="a4-page" >';
-        }
-
-        if(newPageHeightContained> pageHeight){
-          iteration++;
-          height = pageHeight*iteration;
-          newPageHeightContained = $(item).height();
-        }else{
-          newPageHeightContained +=$(item).height();
-        }
-
-        html += $(item).wrap('<p/>').parent().html();
-        $(item).unwrap();
-        $(item).remove()
-
-
-
-        if(EndNewPage){
-          StartNewPage = true;
-          EndNewPage = false;
-          html += '</div>';
-        }
-
-      }else{
-        h += $(item).height();
-      }
-    })
-    $('body').append(html);
-    window.print();
+    // let h = 0;
+    // let pageHeight = 756.8;
+    // let height = pageHeight;
+    // let iteration = 1;
+    // let html ="";
+    // let StartNewPage = true;
+    // let EndNewPage = false;
+    // let newPageHeightContained = 0;
+    // $('.a4-page').children().each(function(i,item){
+    //
+    //   if(h + $(item).height() >height){
+    //     if(StartNewPage){
+    //       StartNewPage = false;
+    //       html += '<div class="page-break"></div><div class="a4-page" >';
+    //     }
+    //
+    //     if(newPageHeightContained> pageHeight){
+    //       iteration++;
+    //       height = pageHeight*iteration;
+    //       newPageHeightContained = $(item).height();
+    //     }else{
+    //       newPageHeightContained +=$(item).height();
+    //     }
+    //
+    //     html += $(item).wrap('<p/>').parent().html();
+    //     $(item).unwrap();
+    //     $(item).remove()
+    //
+    //
+    //
+    //     if(EndNewPage){
+    //       StartNewPage = true;
+    //       EndNewPage = false;
+    //       html += '</div>';
+    //     }
+    //
+    //   }else{
+    //     h += $(item).height();
+    //   }
+    // })
+    // $('body').append(html);
+    // window.print();
   })
 </script>
 
